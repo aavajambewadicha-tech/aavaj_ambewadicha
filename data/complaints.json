@@ -1,15 +1,1 @@
-[
-  {
-    "id": "mw6d9e8s434r",
-    "createdAt": "2026-11-07T12:15:15.292Z",
-    "category": "roads",
-    "title": "test1",
-    "location": "test 1 location",
-    "description": "test 1 details where we explain what is an issue with brief description!",
-    "name": "Nova tm",
-    "images": [
-      "uploads/mw6d9e8s434r-1.jpg"
-    ],
-    "status": "open"
-  }
-]
+[]
