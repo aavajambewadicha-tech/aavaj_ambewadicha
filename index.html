@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ambewadi Issues – Report a problem to the Gram Panchayat</title>
+  <meta name="description" content="Villagers of Ambewadi, Belgaum can report roads, water, drainage, cleaning and other problems here so the Gram Panchayat can see them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@400;600;800&family=Anek+Kannada:wght@400;600;800&family=Anek+Devanagari:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="आवाज आंबेवाडीचा – Voice of Ambewadi">
+  <meta property="og:description" content="Report roads, water, cleaning and other problems to the Gram Panchayat.">
+  <meta property="og:image" content="https://aavajambewadicha-tech.github.io/ambewadi-issues/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <img src="icon.svg" alt="" width="36" height="36">
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="kn" aria-pressed="false">ಕನ್ನಡ</button>
+      <button type="button" data-lang="mr" aria-pressed="false">मराठी</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-logo-card">
+        <img src="logo.svg" alt="आवाज आंबेवाडीचा – Voice of Ambewadi" width="270" height="110">
+      </div>
+      <h1 data-i18n="title"></h1>
+      <p data-i18n="sub"></p>
+      <a class="btn btn-marigold" href="#report" data-i18n="report"></a>
+      <a class="btn btn-outline2" href="#issues" data-i18n="reported"></a>
+    </section>
+
+    <section class="report" id="report" aria-labelledby="report-h">
+      <h2 id="report-h" data-i18n="report"></h2>
+      <form id="issueForm" autocomplete="off">
+        <label for="category" data-i18n="category"></label>
+        <select id="category" name="category" required></select>
+
+        <label for="title" data-i18n="issueTitle"></label>
+        <input id="title" name="title" type="text" maxlength="100" required>
+
+        <label for="location" data-i18n="where"></label>
+        <input id="location" name="location" type="text" maxlength="120" required data-i18n-ph="wherePh">
+
+        <label for="description" data-i18n="details"></label>
+        <textarea id="description" name="description" minlength="10" maxlength="1500" required></textarea>
+        
+        <label for="photoInput" data-i18n="photos"></label>
+        <input id="photoInput" type="file" accept="image/*" multiple class="file-input">
+        <label for="photoInput" class="btn btn-outline" data-i18n="addPhotos"></label>
+        <ul id="previews" class="previews" aria-live="polite"></ul>
+
+        <label for="name" data-i18n="name"></label>
+        <input id="name" name="name" type="text" maxlength="60">
+        <p class="note" data-i18n="nameNote"></p>
+
+        <!-- honeypot: real people never see or fill this -->
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1">
+        </div>
+
+        <button class="btn btn-ink" type="submit" id="submitBtn" data-i18n="submit"></button>
+        <p id="formMsg" class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="board" id="issues" aria-labelledby="issues-h">
+      <div class="board-head">
+        <h2 id="issues-h" data-i18n="listTitle"></h2>
+        <button type="button" class="btn btn-outline small" id="printBtn" data-i18n="print"></button>
+      </div>
+      <div id="filters" class="filters" role="group"></div>
+      <div id="issueList" class="issue-list"></div>
+    </section>
+
+    <section class="close" id="close" aria-labelledby="close-h">
+      <h2 id="close-h" data-i18n="closeTitle"></h2>
+      <p data-i18n="closeIntro"></p>
+      <ol class="close-steps">
+        <li data-i18n="closeStep1"></li>
+        <li data-i18n="closeStep2"></li>
+        <li data-i18n="closeStep3"></li>
+      </ol>
+      <p class="close-addr"><a id="closeAddr" href="#"></a></p>
+      <div class="close-actions">
+        <a class="btn btn-ink" id="closeMail" href="#" data-i18n="closeBtn"></a>
+        <a class="btn btn-outline" id="closeGmail" href="#" target="_blank" rel="noopener" data-i18n="closeGmail"></a>
+      </div>
+      <p class="note" data-i18n="closeNote"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer"></p>
+    <img class="footer-logo" src="logo.svg" alt="आवाज आंबेवाडीचा" width="40" height="40">
+</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
