@@ -13,6 +13,8 @@ const CATS = ["roads", "water", "power", "waste", "health", "school", "transport
 
 const T = {
   en: {
+    close: "Close",
+    viewPhoto: "View photo",
     closeTitle: "Problem fixed? Close the issue",
     closeIntro: "When an issue has been solved, send us a photo of the fixed place and we will mark it Resolved.",
     closeStep1: "Take a photo of the place after it was fixed.",
@@ -59,6 +61,8 @@ const T = {
     },
   },
   kn: {
+    close: "ಮುಚ್ಚಿ",
+    viewPhoto: "ಫೋಟೋ ನೋಡಿ",
     closeTitle: "ಸಮಸ್ಯೆ ಪರಿಹಾರವಾಯಿತೇ? ಸಮಸ್ಯೆಯನ್ನು ಮುಚ್ಚಿ",
     closeIntro: "ಸಮಸ್ಯೆ ಪರಿಹಾರವಾದಾಗ, ಸರಿಪಡಿಸಿದ ಸ್ಥಳದ ಫೋಟೋ ಕಳುಹಿಸಿ. ನಾವು ಅದನ್ನು “ಪರಿಹಾರವಾಗಿದೆ” ಎಂದು ಗುರುತಿಸುತ್ತೇವೆ.",
     closeStep1: "ಸರಿಪಡಿಸಿದ ನಂತರ ಆ ಸ್ಥಳದ ಫೋಟೋ ತೆಗೆಯಿರಿ.",
@@ -105,6 +109,8 @@ const T = {
     },
   },
   mr: {
+    close: "बंद करा",
+    viewPhoto: "फोटो पाहा",
     closeTitle: "समस्या सुटली का? समस्या बंद करा",
     closeIntro: "समस्या सुटल्यावर, दुरुस्त केलेल्या जागेचा फोटो पाठवा. आम्ही ती “सोडवली” म्हणून नोंदवू.",
     closeStep1: "दुरुस्तीनंतर त्या जागेचा फोटो काढा.",
@@ -272,12 +278,14 @@ function issueRow(it) {
   if (imgs.length) {
     const th = el("div", "thumbs");
     imgs.forEach((src) => {
-      const link = el("a");
-      link.href = src; link.target = "_blank"; link.rel = "noopener";
+      const btn = el("button", "thumb-btn");
+      btn.type = "button";
+      btn.setAttribute("aria-label", t("viewPhoto"));
       const im = document.createElement("img");
       im.src = src; im.alt = ""; im.loading = "lazy";
-      link.append(im);
-      th.append(link);
+      btn.append(im);
+      btn.addEventListener("click", () => openPhoto(src));
+      th.append(btn);
     });
     a.append(th);
   }
@@ -295,6 +303,17 @@ async function loadIssues() {
   }
   renderList();
 }
+
+/* ---------- Photo popup ---------- */
+const imgModal = $("imgModal");
+function openPhoto(src) {
+  if (typeof imgModal.showModal !== "function") { window.open(src, "_blank", "noopener"); return; }
+  $("imgModalImg").src = src;
+  imgModal.showModal();
+}
+$("imgClose").addEventListener("click", () => imgModal.close());
+imgModal.addEventListener("click", (e) => { if (e.target === imgModal) imgModal.close(); }); // click outside the photo
+imgModal.addEventListener("close", () => { $("imgModalImg").removeAttribute("src"); });
 
 /* ---------- Photos: shrink in the browser before upload ---------- */
 async function toJpeg(file) {

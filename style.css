@@ -146,6 +146,21 @@ footer { border-top: 2px solid var(--ink); padding-right: 1.5rem; padding-left: 
 .close .note { margin-top: 1rem; }
 @media (max-width: 700px) { .close { margin-left: 1rem; margin-right: 1rem; } }
 
+/* photo popup */
+.thumb-btn { padding: 0; border: 0; background: none; cursor: zoom-in; display: block; }
+.thumb-btn:focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; }
+.img-modal { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 96vh; overflow: visible; color: #fff; }
+.img-modal::backdrop { background: rgba(10, 14, 40, .88); }
+.img-modal-close {
+  display: flex; align-items: center; gap: .4rem; margin: 0 0 .75rem auto;
+  font: inherit; font-weight: 600; font-size: 1.05rem; cursor: pointer;
+  background: var(--marigold); color: var(--ink); border: 2px solid var(--ink); border-radius: 4px; padding: .45rem 1rem;
+}
+.img-modal-close span:first-child { font-size: 1.5rem; line-height: 1; }
+.img-modal img {
+  display: block; margin: 0 auto; max-width: 92vw; max-height: 80vh; width: auto; height: auto;
+  background: #fff; border: 4px solid #fff; border-radius: 6px;
+}
 /* printing the register for the Gram Panchayat */
 @media print {
   .top, .hero, .report, .close, .filters, #printBtn, .issue-foot a, footer { display: none !important; }
